@@ -10,11 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import java.io.Serializable;
 
 @Data // lombok annotation for generating getter-setters-toString-hashcode-equals methods
 @Entity // denoting this is a JPA entity object
 @Table(name = "betting_data") // denoting which table this class should be mapped to
-public class Bet {
+public class Bet implements Serializable{
 	
 	// Column name of the database column given field should be mapped to
 	// JsonProperty represnt the name of the JSON key during serialization/deserialization

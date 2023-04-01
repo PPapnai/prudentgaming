@@ -16,13 +16,19 @@ public class BettingService {
 	@Autowired
 	private BettingDataRepository bettingRepo;
 	
-	@Autowired
-    public BettingService() {
+	private BettingProducerService bettingProducer;
+
+    @Autowired
+    public BettingService(BettingProducerService bettingProducer) {
+        this.bettingProducer = bettingProducer;
     }
 	
 	public boolean addBets(BettingDataRequest bettingDataJson) throws JsonProcessingException {
 		for(Bet bet: bettingDataJson.getBets()){
 			bettingRepo.save(bet);
+			if(bet.getTotalReturns() >= 1500.00){
+				bettingProducer.sendMessage(bet);
+			}
 		}
 		return true;
 	}
