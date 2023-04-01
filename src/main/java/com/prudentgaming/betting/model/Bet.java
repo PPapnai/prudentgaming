@@ -30,11 +30,11 @@ public class Bet {
 	private Integer id;
 
 	@Column(name = "total_bets") 
-	@JsonProperty("total_bets") 
+	@JsonProperty("numbets") 
 	private Integer totalBets;
 
 	@Column(name = "client_id") 
-	@JsonProperty("client_id") 
+	@JsonProperty("clientid") 
 	private Integer clientId;
 
 	@Column(name = "game") 
@@ -46,11 +46,11 @@ public class Bet {
 	private double stake;
 	
 	@Column(name = "total_returns") 
-	@JsonProperty("total_returns") 
+	@JsonProperty("returns") 
 	private double totalReturns;
 
 	@Column(name = "game_date") 
-	@JsonProperty("game_date") 
+	@JsonProperty("date") 
 	private Date gameDate;
 
 }
