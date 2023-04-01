@@ -6,3 +6,17 @@ services:
       - 8080:8080
     volumes:
       - .:/code
+    links:
+      - database:prudent_gaming_db
+    depends_on:
+      - database
+  database:
+    image: mysql/mysql-server:5.7
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=magician
+      - MYSQL_PASSWORD=@AbraKaDabr@
+      - MYSQL_DATABASE=prudent_gaming_db
+    volumes:
+      - ./mysql_db_init.sql:/docker-entrypoint-initdb.d/init.sql
