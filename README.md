@@ -4,9 +4,7 @@ Create a Spring Boot Web Application that can insert data into a MySQL database 
 file containing betting summary data. The application must also be able to search and filter the
 data from the database and display it appropriately.
 
-## Requirements
-
-For building and running this application uses:
+## Build Details
 
 - Build Tool : [Maven 3.8.7](https://maven.apache.org/docs/3.8.7/release-notes.html)
 - Programming Language : [Java 1.8](https://www.oracle.com/in/java/technologies/javase/javase8-archive-downloads.html)
@@ -33,3 +31,15 @@ mvnw clean install
 ```
 
 This will build the jar file in the target folder.
+
+## Running the application locally
+
+Go to your command prompt and execute the below command:
+
+```shell
+cd <project_root_directory>
+docker-compose up
+```
+
+This will start fetch/generate the images for all the 4 containers and start them. You can then either hit the REST endpoint to save the betting summary data or the web [url] (http://localhost:8080/bets/) to access the summary data.
+
