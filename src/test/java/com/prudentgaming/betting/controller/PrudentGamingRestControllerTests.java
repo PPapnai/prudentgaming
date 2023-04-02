@@ -15,12 +15,24 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.web.client.HttpClientErrorException;
+import com.prudentgaming.betting.repository.BettingDataRepository;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.mockito.Mockito.when;
+import com.prudentgaming.betting.model.Bet;
 
+@AutoConfigureMockMvc
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class PrudentGamingRestControllerTests {
 	
 	@Autowired
+	private MockMvc mockMvc;
+	
+	@Autowired
 	private PrudentGamingRestController prudentRestController;
+	
+	@Autowired
+	private BettingDataRepository bettingRepo;
 
 	@Test
 	void contextLoads() {
@@ -35,6 +47,13 @@ class PrudentGamingRestControllerTests {
 	
 	@Value("${application.rest.baseurl}")
 	private String baseUrl;
+	
+	@BeforeAll
+	public void setup() throws Exception {
+		Bet sampleBet = new Bet();
+		sampleBet.setTotalReturns(10);
+		when(bettingRepo.save(sampleBet)).thenReturn(sampleBet);
+	}
 
 	@Test
 	public void testRootSuccess() throws Exception {

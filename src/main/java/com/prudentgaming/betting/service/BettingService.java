@@ -8,6 +8,8 @@ import com.prudentgaming.betting.model.BettingDataRequest;
 import com.prudentgaming.betting.repository.BettingDataRepository;
 import com.prudentgaming.betting.model.Bet;
 import java.util.Collection;
+import java.util.List;
+import java.util.Arrays;
 
 @Service("bettingService")
 /**
@@ -29,16 +31,14 @@ public class BettingService {
     }
 	
 	public boolean addBets(BettingDataRequest bettingDataJson) throws JsonProcessingException {
-		for(Bet bet: bettingDataJson.getBets()){
-			bettingRepo.save(bet);
-			if(bet.getTotalReturns() >= threshold){
-				bettingProducer.sendMessage(bet);
-			}
+		try{
+			List<Bet> list = Arrays.asList(bettingDataJson.getBets());
+			bettingRepo.saveAll(list);
+		}catch(Exception ex){
+			//TODO
+			// Add code for handling or retrying the saving process in case of failure
+			return false;
 		}
 		return true;
-	}
-	
-	public Collection<Bet> getBets(int clientId) {
-		return bettingRepo.findBetsByClientId(clientId);
 	}
 }
