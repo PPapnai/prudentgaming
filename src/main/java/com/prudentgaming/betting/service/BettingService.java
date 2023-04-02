@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.prudentgaming.betting.model.BettingDataRequest;
 import com.prudentgaming.betting.repository.BettingDataRepository;
 import com.prudentgaming.betting.model.Bet;
+import java.util.Collection;
 
 @Service("bettingService")
 /**
@@ -35,5 +36,9 @@ public class BettingService {
 			}
 		}
 		return true;
+	}
+	
+	public Collection<Bet> getBets(int clientId) {
+		return bettingRepo.findBetsByClientId(clientId);
 	}
 }

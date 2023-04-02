@@ -46,14 +46,14 @@ public class PrudentGamingRestController {
 	@PostMapping
 	public ResponseEntity<?> addBettingData(@RequestHeader(HttpHeaders.CONTENT_TYPE) String contentTypeHeader, final @RequestBody BettingDataRequest bettingDataJson){
 		if(!MediaType.APPLICATION_JSON_VALUE.equals(contentTypeHeader))
-			return ResponseEntity.badRequest().body(new RestApiResponse(HttpStatus.BAD_REQUEST.value(), "unimplemented"));
+			return ResponseEntity.badRequest().body(new RestApiResponse(HttpStatus.BAD_REQUEST.value(), "This content-type is not supported"));
 		try{
 			if(service.addBets(bettingDataJson))
-				return ResponseEntity.ok().body(new RestApiResponse(HttpStatus.CREATED.value(), "unimplemented"));
+				return ResponseEntity.ok().body(new RestApiResponse(HttpStatus.CREATED.value(), "betting summary data added successfully"));
 			else
-				return ResponseEntity.ok().body(new RestApiResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "saving failed"));
+				return ResponseEntity.ok().body(new RestApiResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "betting summary data saving failed"));
 		}catch(JsonProcessingException jsonEx){
-			return ResponseEntity.badRequest().body(new RestApiResponse(HttpStatus.BAD_REQUEST.value(), "unimplemented"));
+			return ResponseEntity.badRequest().body(new RestApiResponse(HttpStatus.BAD_REQUEST.value(), "Malformed Json"));
 		}	
 		
 	}
