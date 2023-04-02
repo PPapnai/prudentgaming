@@ -41,5 +41,10 @@ cd <project_root_directory>
 docker-compose up
 ```
 
-This will start fetch/generate the images for all the 4 containers and start them. You can then either hit the REST endpoint to save the betting summary data or the web [url] (http://localhost:8080/bets/) to access the summary data.
+This will start fetch/generate the images for all the 4 containers and start them. You can then either hit the REST endpoint (Shared in postman collection) to save the betting summary data or the web urls to access the summary data as below:
 
+- [For Client specific bets](http://localhost:8080/{gameName}/{clientId}/bet) 
+Eg: http://localhost:8080/game/1/bet
+- [For Game and Client specific bets](http://localhost:8080/game/{clientId}/bet) 
+Eg: http://localhost:8080/blackjack/2/bet
+- [For Summary using form filters](http://localhost:8080/summary/) 

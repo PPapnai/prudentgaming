@@ -20,6 +20,56 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Prudent Gaming</h1>
+						<!-- Content Row -->
+						<form method="POST" action="http://localhost:8080/summary/" enctype="application/json">
+                    <div class="row">
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                   <i class="fas fa-table me-1"></i>
+										Client IDs
+									<input type="text" id="clientIds" name="clientIds">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <i class="fas fa-table me-1"></i>
+										Game
+									<input type="text" id="gameNames" name="gameNames">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <i class="fas fa-table me-1"></i>
+										Start Date
+									<input type="text" id="startDate" name="startDate">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <i class="fas fa-table me-1"></i>
+										End Date
+									<input type="text" id="endDate" name="endDate">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					
+						<input type="submit" value="Go">
+ </form>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>

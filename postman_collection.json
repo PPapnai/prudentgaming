@@ -54,6 +54,36 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8080/summary/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"gameNames\": [\r\n        \"blackjack\"\r\n    ],\r\n    \"clientIds\": [\r\n        \"1\",\r\n        \"2\"\r\n    ],\r\n    \"startDate\": \"2020-05-16\",\r\n    \"endDate\": \"2020-05-17\",\r\n    \"limit\":5,\r\n    \"offset\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/summary/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"summary",
+						""
+					]
+				},
+				"description": "Post api for summary data on UI"
+			},
+			"response": []
 		}
 	]
 }
